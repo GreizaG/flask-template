@@ -40,7 +40,8 @@ First, navigate to your project directory in the terminal, then create a virtual
 *Make sure that you have installed Python version 3.10 or 3.11. If not, you can search google or YouTube on how to install python 3.10 or 3.11 in your operating system.*
 
 ```bash
-$ cd path/to/project
+$ git clone https://github.com/devAbreu/flask-template.git
+$ cd flask-template
 $ python3.11 -m venv env or 3.10 -m venv env # This depends on your python version installed.
 ```
 
