@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" rel="stylesheet">
+    <link href="../static/css/styles.css" rel="stylesheet">
+
+    <title>Available flask routes</title>
+</head>
+
+<body>
+<div class="container-fluid">
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img alt="flask icon" class="flask-icon"
+                                                  src="../static/images/flask_icon.png"> Available Routes</a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbarSupportedContent"
+                    data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for route in routes %}
+                <li class="list-group-item mb-3">
+                    <strong>Endpoint:</strong> <a href={{route.endpoint}}>{{route.endpoint}}</a>
+                    <br>
+                    <strong>Methods:</strong>
+                    {% for method in route.methods %}
+                    {% if method == 'GET' %}
+                    <span class="badge text-bg-success">{{method}}</span>
+                    {% elif method == 'POST' %}
+                    <span class="badge text-bg-primary">{{method}}</span>
+                    {% elif method == 'PUT' %}
+                    <span class="badge text-bg-warning">{{method}}</span>
+                    {% elif method == 'PATCH' %}
+                    <span class="badge text-bg-info">{{method}}</span>
+                    {% elif method == 'DELETE' %}
+                    <span class="badge text-bg-danger">{{method}}</span>
+                    {% endif %}
+                    {% endfor %}
+                    <br>
+                    <details>
+                        <summary>Documentation:</summary>
+                        <p>{{route.doc}}</p>
+                    </details>
+
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script crossorigin="anonymous" defer
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
